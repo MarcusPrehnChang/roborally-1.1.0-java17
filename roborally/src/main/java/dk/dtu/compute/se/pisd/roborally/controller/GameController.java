@@ -211,23 +211,28 @@ public class GameController {
     }
 
     // TODO Assignment V2
-    public void moveForward(@NotNull Player player) {
-
+    public void moveForward(@NotNull Player player) { //Movev forward 1 space.
+        Space moveTo = board.getNeighbour(player.getSpace(), player.getHeading()); //Takes the neighbour in any given direction
+        moveCurrentPlayerToSpace(moveTo); //move the player to the neighbour
     }
 
     // TODO Assignment V2
-    public void fastForward(@NotNull Player player) {
-
+    public void fastForward(@NotNull Player player) { //Moves forward 2 spaces.
+        Space midStep = board.getNeighbour(player.getSpace(), player.getHeading()); //uses the board.getNeighbour() method, given parameters space and heading and returns the neighbour
+        Space moveTo = board.getNeighbour(midStep, player.getHeading()); //Neighbour of the neighbour
+        moveCurrentPlayerToSpace(moveTo); //Move to neighbours neighbour, effectively moving twice in a given direction.
     }
 
     // TODO Assignment V2
-    public void turnRight(@NotNull Player player) {
-
+    public void turnRight(@NotNull Player player) { //turn the player right
+        Heading currentHeading = player.getHeading(); //Takes the players current heading and saves it as currentHeading
+        player.setHeading(currentHeading.next()); //Uses the Heading.next() method to get the heading in the next enum position and sets it as the players currentHeading
     }
 
     // TODO Assignment V2
-    public void turnLeft(@NotNull Player player) {
-
+    public void turnLeft(@NotNull Player player) { //turn the player left.
+        Heading currentHeading = player.getHeading(); //Takes the players current heading and saves it as currentHeading
+        player.setHeading(currentHeading.prev()); //Uses the Heading.prev() method, to get the heading in the previous enum position, and sets that as the current players heading
     }
 
     public boolean moveCards(@NotNull CommandCardField source, @NotNull CommandCardField target) {
