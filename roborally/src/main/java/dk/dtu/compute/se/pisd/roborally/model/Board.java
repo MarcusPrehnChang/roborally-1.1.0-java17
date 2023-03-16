@@ -37,6 +37,7 @@ import static dk.dtu.compute.se.pisd.roborally.model.Phase.INITIALISATION;
  */
 public class Board extends Subject {
 
+    private int playermoves = 0;
     public final int width;
 
     public final int height;
@@ -211,5 +212,20 @@ public class Board extends Subject {
                 ", Step: " + getStep();
     }
 
+    public int getPlayermoves() {
+        return playermoves;
+    }
+
+    public void setPlayermoves(int playermoves) {
+        this.playermoves = playermoves;
+    }
+// TODO Assignment V1: add a counter along with a getter and a setter, so the
+    //      state the board (game) contains the number of moves, which then can
+    //      be used to extend the status message including the number of
 
 }
+
+
+
+
+
